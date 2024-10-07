@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
+import { FileModule } from './file/file.module';
 
 @Module({
   imports: [
@@ -15,8 +16,10 @@ import { UserModule } from './user/user.module';
       database: 'nestPro',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
       synchronize: true,  // Set to true for development only
+      dropSchema: true,
     }),
-    UserModule, // Import user module
+    UserModule,
+    FileModule, // Import user module
   ],
   controllers: [AppController],
   providers: [AppService],
